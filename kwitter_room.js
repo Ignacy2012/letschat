@@ -22,13 +22,15 @@ function addRoom(){
       firebase.database().ref("/").child(room_name).update({
             purpose: "adding user"
       });
+
+      window.location = "kwitter_page.html";
 }
 
 
 function getData() {firebase.database().ref("/").on('value', function(snapshot) {document.getElementById("output").innerHTML = "";snapshot.forEach(function(childSnapshot) {childKey  = childSnapshot.key;
        Room_names = childKey;
-       console.log("Room_name " + Room_names);
-       row = "<div class='room_name' id="+Room_names+" onclick='nextPage(this.id)'># </div><hr>";
+       console.log("Room_names " + Room_names);
+       row = "<div class='room_name' id="+Room_names+" onclick='nextPage(this.id)'># "+Room_names+"</div><hr>";
        document.getElementById("output").innerHTML += row;
       //Start code
 
